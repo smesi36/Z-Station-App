@@ -1,5 +1,5 @@
 import express from "express";
-import { ZStation } from "../models/zStationModel.js";
+import { ZStation } from '../models/zStationSchema.js';
 
 const router = express.Router();
 
