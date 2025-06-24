@@ -6,11 +6,11 @@ import morgan from "morgan";
 import dotenv from 'dotenv';
 
 //This is for displaying station locations on the map
-import stationLocationsRoutes from "./routes/stationLocations.js";
+import stationLocationsRoutes from "./src/routes/stationLocations.js";
 
 dotenv.config();
 const app = express()
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 4000;
 const MongoDB = process.env.MONGO_URI
 mongoose.Promise = global.Promise;
 
