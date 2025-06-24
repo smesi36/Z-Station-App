@@ -7,6 +7,7 @@ import { connectDB } from "./src/config/databaseConnection.js";
 
 //This is for displaying station locations on the map
 import stationLocationsRoutes from "./src/routes/stationLocations.js";
+
 import testRoute from "./src/routes/testRoute.js";
 
 
@@ -14,6 +15,7 @@ dotenv.config();
 connectDB();
 const app = express();
 const PORT = process.env.PORT;
+
 
 
 //___ MIDDLEWARES ___
