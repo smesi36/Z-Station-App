@@ -1,63 +1,53 @@
 //___ IMPORTS ___
-import mongoose from 'mongoose';
-import express from 'express';
-import cors from 'cors'
+import express from "express";
+import cors from "cors";
 import morgan from "morgan";
-import dotenv from 'dotenv';
+import dotenv from "dotenv";
+import { connectDB } from "./src/config/databaseConnection.js";
 
 //This is for displaying station locations on the map
-import stationLocationsRoutes from "./routes/stationLocations.js";
+import stationLocationsRoutes from "./src/routes/stationLocations.js";
+import testRoute from "./src/routes/testRoute.js";
+
 
 dotenv.config();
-const app = express()
+connectDB();
+const app = express();
 const PORT = process.env.PORT;
-const MongoDB = process.env.MONGO_URI
-mongoose.Promise = global.Promise;
 
-
-//___ DATABASE CONNECTION ___
-const connectDB = async () => {
-    try {
-        await mongoose.connect(MongoDB);
-        console.log("MongoDB Connected");
-
-        process.on('exit', async () => {
-            if (mongoose.connection.readyState === 1) {
-                await closeDB();
-                console.log("MongoDB Connection Closed");
-            }
-        });
-
-    } catch (err) {
-        console.error("Connection Error:", err.message);
-        process.exit(1);
-    }
-};
-
-const closeDB = async () => {
-  await mongoose.connection.close();
-};
 
 //___ MIDDLEWARES ___
 app.use(express.json());
-app.use(morgan('dev'))
-app.use(cors('http://localhost:5173'))
-
-
-
+app.use(morgan("dev"));
+app.use(cors({ origin: "http://localhost:5173" }));
 
 //___ API ROUTES ___
 //___ TEST ___
-app.get('/test', (req, res) => {
-  res.status(200).json({ message: "API is working!" });
-});
-
+app.use("/api", testRoute);
 
 // This is for displaying station locations on the map (Erekle)
 app.use("/api/stations", stationLocationsRoutes);
 
+//___ SONNY'S ENDPOINTS ___
+
+
+
+
+
+
+
+
+//___ RACHEL'S ENDPOINTS ___
+
+
+
+
+
+
+
 
 //___ SERVER CONNECTION ___
-app.listen(PORT, () => console.log(`Server is connected at http://localhost:${PORT}`))
+app.listen(PORT, () =>
+  console.log(`Server is connected at http://localhost:${PORT}`)
+);
 
-export { connectDB, closeDB}
