@@ -46,4 +46,5 @@ const zStationSchema = new mongoose.Schema({
   lastUpdated: { type: String, required: true },
 });
 
-export const ZStation = mongoose.model("ZStation", zStationSchema, "stations");
+//___ Updated collection name to StationData to align with the database collection name ___
+export const ZStation = mongoose.model("ZStation", zStationSchema, "StationData");
