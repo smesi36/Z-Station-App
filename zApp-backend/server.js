@@ -9,11 +9,12 @@ import { connectDB } from "./src/config/databaseConnection.js";
 import stationLocationsRoutes from "./src/routes/stationLocations.js";
 import testRoute from "./src/routes/testRoute.js";
 
+import searchServicesRoutes from "./src/routes/searchServices.js";
 
 
 //___ INITIALIZE EXPRESS ___
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 4000;
 
 //__ DATABASE CONNECTION ___
 connectDB();
@@ -33,7 +34,7 @@ app.use("/api/stations", stationLocationsRoutes);
 
 //___ SONNY'S ENDPOINTS ___
 
-
+app.use("/api/services", searchServicesRoutes);
 
 
 
