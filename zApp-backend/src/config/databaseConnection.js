@@ -1,4 +1,7 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv";
+dotenv.config();
+
 const MongoDB = process.env.MONGO_URI;
 
 mongoose.Promise = global.Promise;
