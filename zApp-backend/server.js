@@ -1,21 +1,22 @@
 //___ IMPORTS ___
+
 import express from "express";
 import cors from "cors";
 import morgan from "morgan";
-import dotenv from "dotenv";
 import { connectDB } from "./src/config/databaseConnection.js";
 
 //This is for displaying station locations on the map
 import stationLocationsRoutes from "./src/routes/stationLocations.js";
-
 import testRoute from "./src/routes/testRoute.js";
 
 
-dotenv.config();
-connectDB();
+
+//___ INITIALIZE EXPRESS ___
 const app = express();
 const PORT = process.env.PORT;
 
+//__ DATABASE CONNECTION ___
+connectDB();
 
 
 //___ MIDDLEWARES ___
@@ -40,7 +41,6 @@ app.use("/api/stations", stationLocationsRoutes);
 
 
 //___ RACHEL'S ENDPOINTS ___
-
 
 
 
