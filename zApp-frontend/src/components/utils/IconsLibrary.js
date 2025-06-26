@@ -27,7 +27,7 @@ const downArrowLightIcon = {
   scaledSize: { width: 11, height: 7 },
 };
 
-// Close icon (circled cross) 
+// Close icon (circled cross)
 const closeIcon = {
   url: `data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'><path d='M1.2 12L0 10.8L4.8 6L0 1.2L1.2 0L6 4.8L10.8 0L12 1.2L7.2 6L12 10.8L10.8 12L6 7.2L1.2 12Z' fill='%23353535'/></svg>`,
   scaledSize: { width: 12, height: 12 },
@@ -138,9 +138,10 @@ const arrowBackwardIcon = {
 // ----------------------- MARKERS ---------------------- //
 
 // Orange Z marker (38x48)
-const orangeMarkerIcon = {
-  url: `data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='38' height='48' viewBox='0 0 38 48' fill='none'><path d='M19.0003 0.916687C23.874 0.916763 28.1602 2.62165 31.8685 6.04169C35.5624 9.44851 37.4163 14.026 37.4163 19.8005C37.4162 23.6223 35.8973 27.8029 32.8226 32.3474C29.7748 36.8519 25.1692 41.7368 18.9993 47.0036C12.8299 41.7371 8.22571 36.8517 5.17805 32.3474C2.10325 27.8028 0.583449 23.6224 0.583328 19.8005C0.583328 14.026 2.43824 9.44852 6.13216 6.04169C9.84041 2.62177 14.1267 0.916687 19.0003 0.916687Z' fill='url(%23paint0_linear_66_288)' stroke='%23F38E5E' stroke-width='0.5'/><defs><linearGradient id='paint0_linear_66_288' x1='0.333328' y1='0.666687' x2='37.6667' y2='0.666687' gradientUnits='userSpaceOnUse'><stop stop-color='%23ED560E'/><stop offset='0.451923' stop-color='%23F57708'/><stop offset='1' stop-color='%23FFA000'/></linearGradient></defs></svg>`,
-  scaledSize: { width: 38, height: 48 },
+const zMarkerIcon = {
+  url: "/zMapMarker.png", // relative to public folder,
+  scaledSize: { width: 48, height: 48 },
+  anchor: { x: 19, y: 48 },
 };
 
 // Area pin orange (cluster marker, 40x40)
@@ -161,34 +162,33 @@ const fuelPriceMarkerOther = {
   scaledSize: { width: 40, height: 51 },
 };
 
-
 export const icons = {
-    searchSmallIcon: searchIcon,
-    searchLargeIcon: searchLargeIcon,
-    downArrowBoldIcon: downArrowIcon,
-    downArrowLightIcon: downArrowLightIcon,
-    closeIcon: closeIcon,
-    orangePinIcon: pinOrangeIcon,
-    hamburgerMenuIcon: menuIconHam,
-    pinLocationSmallIcon: pinLocationSmIcon,
-    pinLargeHollowIcon: pinLargeHollow,
-    gasStationIcon: gasStationIcon,
-    truckIcon: truckIcon,
-    carWashIcon: carWashIcon,
-    priceIcon: dollarSign,
-    locationIcon: geolocationIcon,
-    circledCrossIcon: closeCircleIcon,
-    circledBarIcon: hideCircleIcon,
-    openInNewTabIcon: openInNewTabIcon,
-    arrowForwardIcon: arrowForwardIcon,
-    filterSearchIcon: filterIcon,
-    sortResultsIcon: sortIcon,
-    checkIcon: checkIcon,
-    arrowBackwardIcon: arrowBackwardIcon,
-    orangeMarkerIcon: orangeMarkerIcon,
-    areaPinOrangeIcon: areaPinOrangeIcon,
-    fuelPrcMarkerLowest: fuelPrcMarkerLowest,
-    fuelPriceMarkerOther: fuelPriceMarkerOther
+  searchSmallIcon: searchIcon,
+  searchLargeIcon: searchLargeIcon,
+  downArrowBoldIcon: downArrowIcon,
+  downArrowLightIcon: downArrowLightIcon,
+  closeIcon: closeIcon,
+  orangePinIcon: pinOrangeIcon,
+  hamburgerMenuIcon: menuIconHam,
+  pinLocationSmallIcon: pinLocationSmIcon,
+  pinLargeHollowIcon: pinLargeHollow,
+  gasStationIcon: gasStationIcon,
+  truckIcon: truckIcon,
+  carWashIcon: carWashIcon,
+  priceIcon: dollarSign,
+  locationIcon: geolocationIcon,
+  circledCrossIcon: closeCircleIcon,
+  circledBarIcon: hideCircleIcon,
+  openInNewTabIcon: openInNewTabIcon,
+  arrowForwardIcon: arrowForwardIcon,
+  filterSearchIcon: filterIcon,
+  sortResultsIcon: sortIcon,
+  checkIcon: checkIcon,
+  arrowBackwardIcon: arrowBackwardIcon,
+  zMarkerIcon: zMarkerIcon,
+  areaPinOrangeIcon: areaPinOrangeIcon,
+  fuelPrcMarkerLowest: fuelPrcMarkerLowest,
+  fuelPriceMarkerOther: fuelPriceMarkerOther,
 };
 
 // how to import icons from the library:
@@ -199,3 +199,4 @@ export const icons = {
 // const searchSmallIcon = icons.searchIcon;
 // const orangePinIcon = icons.pinOrangeIcon;
 // const fuelPriceMarkerLowest = icons.fuelPrcMarkerLowest;
+
