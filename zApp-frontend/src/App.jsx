@@ -1,8 +1,8 @@
 import "./App.css";
-import Footer from "./components/common/Footer";
-import MainBody from "./components/common/MainBody";
-import NavbarTop from "./components/common/NavbarTop";
-import PageRoutes from "./components/routes/PageRoutes";
+import Footer from "./components/common/Footer.jsx";
+import MainBody from "./components/common/MainBody.jsx";
+import NavbarTop from "./components/common/NavBarTop.jsx";
+
 
 function App() {
   return (
