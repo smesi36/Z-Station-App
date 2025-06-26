@@ -1,10 +1,10 @@
+import StationFinder from '../features/StationFinder';
 import InteractiveMap from '../features/InteractiveMap'
-import NavbarTop from '../common/NavBarTop.jsx'
 
 export default function HomeSearch() {
   return (
     <div>
-      
+      <StationFinder />  
       <InteractiveMap />
     </div>
   )
