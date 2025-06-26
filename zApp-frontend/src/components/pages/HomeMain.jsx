@@ -1,11 +1,11 @@
-import NavbarTop from '../common/NavbarTop';
-import InteractiveMap from '../features/InteractiveMap';
+import NavbarTop from '../common/NavBarTop.jsx';
+import InteractiveMap from '../features/InteractiveMap.jsx';
 
 
 export default function HomeMain() {
   return (
     <div>
-      <NavbarTop/>
+      
       <InteractiveMap />
       
     </div>
