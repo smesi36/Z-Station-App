@@ -53,6 +53,21 @@
   background: var(--Color, #fff);
 }
 
+.inputWrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.clearIcon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #888;
+  font-size: 16px;
+}
+
 .priceToggle {
   display: flex;
   width: 161px;
@@ -91,6 +106,17 @@
   backdrop-filter: blur(15px);
   margin-left: 0;
   margin-top: 40px;
+}
+
+.stationCard{
+  display: flex;
+padding: 16px 0px 24px 0px;
+flex-direction: column;
+align-items: flex-start;
+gap: 16px;
+align-self: stretch;
+border-bottom: 0.75px solid var(--Neutral-200, #C0C0C0);
+background: #FFF;
 }
 
 .stationNameH4 {
@@ -184,15 +210,15 @@
   height: 100% !important;
 }
 
-.currentLocationButton{
+.currentLocationButton {
   all: unset;
   cursor: pointer;
   margin-right: 150px;
 }
 
-.locationButton{
+.locationButton {
   width: 16px;
-height: 16px;
-aspect-ratio: 1/1;
-margin-right: 10px;
+  height: 16px;
+  aspect-ratio: 1/1;
+  margin-right: 10px;
 }
