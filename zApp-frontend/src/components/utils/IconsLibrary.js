@@ -27,7 +27,7 @@ const downArrowLightIcon = {
   scaledSize: { width: 11, height: 7 },
 };
 
-// Close icon (circled cross) 
+// Close icon (circled cross)
 const closeIcon = {
   url: `data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'><path d='M1.2 12L0 10.8L4.8 6L0 1.2L1.2 0L6 4.8L10.8 0L12 1.2L7.2 6L12 10.8L10.8 12L6 7.2L1.2 12Z' fill='%23353535'/></svg>`,
   scaledSize: { width: 12, height: 12 },
@@ -138,16 +138,23 @@ const arrowBackwardIcon = {
 // ----------------------- MARKERS ---------------------- //
 
 // Orange Z marker (38x48)
-const orangeMarkerIcon = {
-  url: `data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='38' height='48' viewBox='0 0 38 48' fill='none'><path d='M19.0003 0.916687C23.874 0.916763 28.1602 2.62165 31.8685 6.04169C35.5624 9.44851 37.4163 14.026 37.4163 19.8005C37.4162 23.6223 35.8973 27.8029 32.8226 32.3474C29.7748 36.8519 25.1692 41.7368 18.9993 47.0036C12.8299 41.7371 8.22571 36.8517 5.17805 32.3474C2.10325 27.8028 0.583449 23.6224 0.583328 19.8005C0.583328 14.026 2.43824 9.44852 6.13216 6.04169C9.84041 2.62177 14.1267 0.916687 19.0003 0.916687Z' fill='url(%23paint0_linear_66_288)' stroke='%23F38E5E' stroke-width='0.5'/><defs><linearGradient id='paint0_linear_66_288' x1='0.333328' y1='0.666687' x2='37.6667' y2='0.666687' gradientUnits='userSpaceOnUse'><stop stop-color='%23ED560E'/><stop offset='0.451923' stop-color='%23F57708'/><stop offset='1' stop-color='%23FFA000'/></linearGradient></defs></svg>`,
-  scaledSize: { width: 38, height: 48 },
+const zMarkerIcon = {
+  url: "/zMapMarker.png", // relative to public folder,
+  scaledSize: { width: 48, height: 48 },
+  anchor: { x: 19, y: 48 },
 };
 
 // Area pin orange (cluster marker, 40x40)
 const areaPinOrangeIcon = {
-  url: `data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40' fill='none'><g opacity='0.8'><g style='mix-blend-mode:hard-light'><circle cx='20' cy='20' r='19' fill='%23ED560E'/><circle cx='20' cy='20' r='19' stroke='%23B0400A' stroke-width='2'/></g></g></svg>`,
+  url: `data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40' fill='none'><g opacity='0.7'><g style='mix-blend-mode:hard-light'><circle cx='20' cy='20' r='19' fill='%23ED560E'/><circle cx='20' cy='20' r='19' stroke='%23B0400A' stroke-width='2'/></g></g></svg>`,
   scaledSize: { width: 40, height: 40 },
 };
+
+const areaPinBlueIcon = {
+  url: `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none"><g opacity="0.8"><g style="mix-blend-mode:hard-light"><circle cx="20" cy="20" r="19" fill="%23272270"/><circle cx="20" cy="20" r="19" stroke="%231C194C" stroke-width="2"/></g></g></svg>`,
+  scaledSize: { width: 40, height: 40 },
+};
+
 
 // Lowest fuel price marker (dark blue, 40x51)
 const fuelPrcMarkerLowest = {
@@ -155,40 +162,56 @@ const fuelPrcMarkerLowest = {
   scaledSize: { width: 40, height: 51 },
 };
 
+const fuelPrcMarkerLowestTest = {
+  url: `data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='51' viewBox='0 0 40 51' fill='none'>
+    <path d='M20 0.75C25.2264 0.75 29.8225 2.57896 33.7988 6.24609C37.7608 9.90014 39.75 14.8089 39.75 21C39.75 25.0999 38.12 29.583 34.8242 34.4541C31.5557 39.2848 26.6167 44.5229 20 50.1699C13.3833 44.5229 8.4443 39.2848 5.17578 34.4541C1.88002 29.583 0.25 25.0999 0.25 21C0.25 14.8089 2.2392 9.90014 6.20117 6.24609C10.1775 2.57896 14.7736 0.75 20 0.75Z' fill='url(%23paint0_linear_72_1967)' stroke='%233931AF' stroke-width='0.5'/>
+    <text x='50%' y='45%' text-anchor='middle' fill='white' font-size='12' font-family='Arial' dy='.3em'>269.5</text>
+    <defs>
+      <linearGradient id='paint0_linear_72_1967' x1='0' y1='0.5' x2='40' y2='0.5' gradientUnits='userSpaceOnUse'>
+        <stop stop-color='%23272270'/>
+        <stop offset='1' stop-color='%233931AF'/>
+      </linearGradient>
+    </defs>
+  </svg>`,
+  scaledSize: { width: 40, height: 51},
+};
+
+
 // Fuel price marker (light, 40x51)
 const fuelPriceMarkerOther = {
   url: `data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='51' viewBox='0 0 40 51' fill='none'><path d='M20 0.75C25.2264 0.75 29.8225 2.57896 33.7988 6.24609C37.7608 9.90014 39.75 14.8089 39.75 21C39.75 25.0999 38.12 29.583 34.8242 34.4541C31.5557 39.2848 26.6167 44.5229 20 50.1699C13.3833 44.5229 8.4443 39.2848 5.17578 34.4541C1.88002 29.583 0.25 25.0999 0.25 21C0.25 14.8089 2.2392 9.90014 6.20117 6.24609C10.1775 2.57896 14.7736 0.75 20 0.75Z' fill='%23E1DFFF' stroke='%23BAB6F4' stroke-width='0.5'/></svg>`,
   scaledSize: { width: 40, height: 51 },
 };
 
-
 export const icons = {
-    searchSmallIcon: searchIcon,
-    searchLargeIcon: searchLargeIcon,
-    downArrowBoldIcon: downArrowIcon,
-    downArrowLightIcon: downArrowLightIcon,
-    closeIcon: closeIcon,
-    orangePinIcon: pinOrangeIcon,
-    hamburgerMenuIcon: menuIconHam,
-    pinLocationSmallIcon: pinLocationSmIcon,
-    pinLargeHollowIcon: pinLargeHollow,
-    gasStationIcon: gasStationIcon,
-    truckIcon: truckIcon,
-    carWashIcon: carWashIcon,
-    priceIcon: dollarSign,
-    locationIcon: geolocationIcon,
-    circledCrossIcon: closeCircleIcon,
-    circledBarIcon: hideCircleIcon,
-    openInNewTabIcon: openInNewTabIcon,
-    arrowForwardIcon: arrowForwardIcon,
-    filterSearchIcon: filterIcon,
-    sortResultsIcon: sortIcon,
-    checkIcon: checkIcon,
-    arrowBackwardIcon: arrowBackwardIcon,
-    orangeMarkerIcon: orangeMarkerIcon,
-    areaPinOrangeIcon: areaPinOrangeIcon,
-    fuelPrcMarkerLowest: fuelPrcMarkerLowest,
-    fuelPriceMarkerOther: fuelPriceMarkerOther
+  searchSmallIcon: searchIcon,
+  searchLargeIcon: searchLargeIcon,
+  downArrowBoldIcon: downArrowIcon,
+  downArrowLightIcon: downArrowLightIcon,
+  closeIcon: closeIcon,
+  orangePinIcon: pinOrangeIcon,
+  hamburgerMenuIcon: menuIconHam,
+  pinLocationSmallIcon: pinLocationSmIcon,
+  pinLargeHollowIcon: pinLargeHollow,
+  gasStationIcon: gasStationIcon,
+  truckIcon: truckIcon,
+  carWashIcon: carWashIcon,
+  priceIcon: dollarSign,
+  locationIcon: geolocationIcon,
+  circledCrossIcon: closeCircleIcon,
+  circledBarIcon: hideCircleIcon,
+  openInNewTabIcon: openInNewTabIcon,
+  arrowForwardIcon: arrowForwardIcon,
+  filterSearchIcon: filterIcon,
+  sortResultsIcon: sortIcon,
+  checkIcon: checkIcon,
+  arrowBackwardIcon: arrowBackwardIcon,
+  zMarkerIcon: zMarkerIcon,
+  zMarkerIconTest: fuelPrcMarkerLowestTest,
+  areaPinOrangeIcon: areaPinOrangeIcon,
+  areaPinBlueIcon: areaPinBlueIcon,
+  fuelPrcMarkerLowest: fuelPrcMarkerLowest,
+  fuelPriceMarkerOther: fuelPriceMarkerOther,
 };
 
 // how to import icons from the library:
@@ -199,3 +222,4 @@ export const icons = {
 // const searchSmallIcon = icons.searchIcon;
 // const orangePinIcon = icons.pinOrangeIcon;
 // const fuelPriceMarkerLowest = icons.fuelPrcMarkerLowest;
+

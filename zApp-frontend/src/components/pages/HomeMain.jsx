@@ -1,4 +1,3 @@
-import NavbarTop from '../common/NavBarTop.jsx';
 import InteractiveMap from '../features/InteractiveMap.jsx';
 
 
