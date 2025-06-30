@@ -6,14 +6,13 @@ import {
   Marker,
   InfoWindow,
 } from "@react-google-maps/api";
+import { MarkerClusterer } from "@googlemaps/markerclusterer"; 
 import Styles from "./StationFinder.module.css";
-import priceToggle from "../../images/priceToggle.png";
-import filterIcon from "../../images/filterIcons.png";
-import LocationIcons from "../../images/LocationIcons.png";
 
-import showResultsIcon from "../../images/showResultsIcons.png";
-import XIconForShowResultsModal from "../../images/XIconForShowResultsModal.png";
-import filterTag from "../../images/filterTag.png";
+// Import the newly separated components
+import SearchBar from "./Searchbar";
+import SearchResults from "./SearchResult";
+
 import { icons } from "../utils/IconsLibrary";
 
 // MAP CONTAINER STYLE AND DEFAULT CENTER
@@ -31,7 +30,7 @@ const StationFinder = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [showResultsModal, setShowResultsModal] = useState(false);
-  const [showFilterOptions, setShowFilterOptions] = useState(false);
+  const [showFilterOptions, setShowFilterOptions] = useState(false); 
   const [selectedFilters, setSelectedFilters] = useState([]);
   const [selectedStation, setSelectedStation] = useState(null);
   const mapRef = useRef(null);
@@ -52,7 +51,7 @@ const StationFinder = () => {
   const fetchStations = useCallback(async () => {
     setLoading(true);
     setError(null);
-    setShowResultsModal(true);
+    setShowResultsModal(true); 
     try {
       const response = await axios.get(
         `http://localhost:4000/api/services/locations/services`,
@@ -80,7 +79,7 @@ const StationFinder = () => {
     } finally {
       setLoading(false);
     }
-  }, [searchTerm, selectedFilters]); // Re-run if searchTerm or selectedFilters change
+  }, [searchTerm, selectedFilters]); 
 
   // TRIGGER SEARCH INPUT ON ENTER
   const handleKeyDown = (event) => {
@@ -145,59 +144,26 @@ const StationFinder = () => {
     }
   }, [selectedFilters, showResultsModal, searchTerm, fetchStations]);
 
-  // CLOSE SEARCH RESULTS MODAL
+  // CLOSE SEARCH RESULTS MODAL and reset state related to search results
   const handleCloseSearchResults = () => {
     setShowResultsModal(false);
     setStations([]);
     setSearchTerm("");
+    setShowFilterOptions(false); 
   };
-
-  // Destructure icon from utils for cleaner access
-  const downArrowLightIcon = icons.downArrowLightIcon.url;
-  const closeIcon = icons.closeIcon.url;
 
   return (
     <div className={Styles.stationFinderContainer}>
-      {/* SEARCH SECTION */}
-      <div className={Styles.search}>
-        <h1 className={Styles.h1Search}>Search Z Stations</h1>
-        <div className={Styles.inputWrapper}>
-          <input
-            className={Styles.inputSearch}
-            type="text"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            onKeyDown={handleKeyDown}
-            placeholder="Search by Location, Service, or Fuel"
-          />
-          {searchTerm && (
-            <span
-              className={Styles.clearIcon}
-              onClick={handleCloseSearchResults}
-            >
-              ✖
-            </span>
-          )}
-        </div>
-        <button
-          onClick={handleUseCurrentLocation}
-          className={Styles.currentLocationButton}
-        >
-          <img src={LocationIcons} className={Styles.locationButton} />
-          Use my current Location
-        </button>
-        <img
-          src={priceToggle}
-          className={Styles.priceToggle}
-          alt="Show price"
-        />
-        {loading && <p>Loading results...</p>}
-        {error && (
-          <div>
-            <strong>Error!</strong> <span>{error}</span>
-          </div>
-        )}
-      </div>
+      {/* SEARCH BAR COMPONENT */}
+      <SearchBar
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+        handleKeyDown={handleKeyDown}
+        handleCloseSearchResults={handleCloseSearchResults}
+        handleUseCurrentLocation={handleUseCurrentLocation}
+        loading={loading}
+        error={error}
+      />
 
       {/* GOOGLE MAP CONTAINER */}
       <div className={Styles.googleMapContainerWrapper}>
@@ -220,120 +186,25 @@ const StationFinder = () => {
                   lng: parseFloat(station.location.longitude),
                 }}
                 title={station.name}
+                icon={{
+                  url: icons.zMarkerIcon.url, 
+                }}
                 onClick={() => setSelectedStation(station)}
               />
             ))}
 
-            {/* SEARCH RESULTS MODAL */}
+            {/* SEARCH RESULTS MODAL Component */}
             {showResultsModal && (
-              <div className={Styles.searchResultsContainer}>
-                <div className={Styles.ResultModalTopNavContainer}>
-                  <div>
-                    <img
-                      src={filterIcon}
-                      className={Styles.filterIcon}
-                      alt="Filter"
-                      onClick={() => setShowFilterOptions(!showFilterOptions)}
-                    />
-                    <img
-                      src={showResultsIcon}
-                      className={Styles.showResultsIcon}
-                      alt="Show Results"
-                    />
-                  </div>
-                  <img
-                    src={XIconForShowResultsModal}
-                    className={Styles.XIconForShowResultsModal}
-                    alt="Close"
-                    onClick={() => {
-                      setShowResultsModal(false);
-                      setStations([]);
-                      setSearchTerm("");
-                    }}
-                  />
-                </div>
-
-                {/* FILTER OPTIONS */}
-                {showFilterOptions && (
-                  <div className={Styles.filterOptionsDropdown}>
-                    <h3>Filter by Service:</h3>
-                    {["Carwash", "Coffee", "LPG"].map((filter) => (
-                      <label key={filter}>
-                        <input
-                          type="checkbox"
-                          value={filter}
-                          checked={selectedFilters.includes(filter)}
-                          onChange={() => handleFilterChange(filter)}
-                        />
-                        {filter}
-                      </label>
-                    ))}
-                  </div>
-                )}
-
-                {/* SEARCH RESULTS */}
-                {stations.length > 0
-                  ? stations.map((station) => (
-                      <div key={station.id} className={Styles.stationCard}>
-                        <h4 className={Styles.stationNameH4}>{station.name}</h4>
-                        {station.location && (
-                          <p className={Styles.stationLocationP}>
-                            {station.location.city}
-                          </p>
-                        )}
-                        {station.services?.length > 0 &&
-                          selectedFilters.length > 0 && (
-                            <div className={Styles.stationServicesDiv}>
-                              {station.services
-                                .filter((service) =>
-                                  selectedFilters.some((filter) =>
-                                    service
-                                      .toLowerCase()
-                                      .includes(filter.toLowerCase())
-                                  )
-                                )
-                                .map((service, index) => (
-                                  <div
-                                    key={index}
-                                    className={Styles.serviceTagContainer}
-                                  >
-                                    <img
-                                      src={filterTag}
-                                      className={Styles.filterTag}
-                                      alt="Filter Tag"
-                                    />
-                                    <p className={Styles.serviceTagName}>
-                                      {service
-                                        .replace(/([A-Z])/g, " $1")
-                                        .trim()}
-                                    </p>
-                                  </div>
-                                ))}
-                            </div>
-                          )}
-                        <p>
-                          <span className={Styles.stationOpenNowSpan}>
-                            Open Now
-                          </span>
-                          {station.is_open_now ? (
-                            <span>
-                              <img
-                                src={downArrowLightIcon}
-                                className={Styles.downArrowLightIcon}
-                                alt="Open Now"
-                              />
-                            </span>
-                          ) : (
-                            <span>No</span>
-                          )}
-                        </p>
-                      </div>
-                    ))
-                  : !loading &&
-                    searchTerm && (
-                      <p>No ZStations Services found for "{searchTerm}".</p>
-                    )}
-              </div>
+              <SearchResults
+                stations={stations}
+                loading={loading}
+                searchTerm={searchTerm}
+                showFilterOptions={showFilterOptions}
+                setShowFilterOptions={setShowFilterOptions}
+                selectedFilters={selectedFilters}
+                handleFilterChange={handleFilterChange}
+                onClose={handleCloseSearchResults}
+              />
             )}
 
             {/* MARKER INFO WINDOWS */}
