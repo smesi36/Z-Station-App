@@ -5,7 +5,7 @@ export default function HomeMain() {
   return (
     <div>
       
-      {/* <InteractiveMap /> */}
+      <InteractiveMap />
       
     </div>
   )
