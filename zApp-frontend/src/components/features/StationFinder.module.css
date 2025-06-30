@@ -1,4 +1,18 @@
+/* STATION FINDER CONTAINER */
+.stationFinderContainer {
+  position: relative;
+  height: calc(100vh - var(--header-height, 0px));
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* SEARCH MODAL */
 .search {
+  position: absolute;
+  z-index: 2;
+  left: 150px;
+  top: 20px;
   display: flex;
   width: 453px;
   height: 211px;
@@ -8,6 +22,7 @@
   align-items: center;
   gap: 16px;
   flex-shrink: 0;
+  margin-left: 0;
   border-radius: 40px;
   background: var(
     --gradient-main,
@@ -38,6 +53,21 @@
   background: var(--Color, #fff);
 }
 
+.inputWrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.clearIcon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #888;
+  font-size: 16px;
+}
+
 .priceToggle {
   display: flex;
   width: 161px;
@@ -55,4 +85,140 @@
     ),
     #e1dfff;
   box-shadow: 0px 3px 4px 3px rgba(0, 0, 0, 0.2) inset;
+}
+
+/* SEARCH RESULTS CONTAINER */
+.searchResultsContainer {
+  position: absolute;
+  z-index: 2;
+  left: 150px;
+  top: calc(50px + 211px + 20px);
+  width: 453px;
+  max-height: calc(100vh - (50px + 211px + 20px + 50px));
+  overflow-y: auto;
+  display: flex;
+  padding: 30px 50px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  border-radius: 50px;
+  background: var(--Black-0, #fff);
+  backdrop-filter: blur(15px);
+  margin-left: 0;
+  margin-top: 40px;
+}
+
+.stationCard{
+  display: flex;
+padding: 16px 0px 24px 0px;
+flex-direction: column;
+align-items: flex-start;
+gap: 16px;
+align-self: stretch;
+border-bottom: 0.75px solid var(--Neutral-200, #C0C0C0);
+background: #FFF;
+}
+
+.stationNameH4 {
+  color: var(--secondary-500-main, #272270);
+  font-family: "Test Calibre";
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 120%;
+}
+
+.stationLocationP {
+  color: var(--neutral-500-main, #353535);
+  font-family: "Test Calibre";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+}
+
+.stationOpenNowSpan {
+  color: var(--Black-5, #2a2a2a);
+  font-family: "Test Calibre";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%;
+}
+
+.filterIcon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  aspect-ratio: 1/1;
+  cursor: pointer;
+}
+
+.showResultsIcon {
+  width: 16px;
+  height: 20px;
+  flex-shrink: 0;
+  margin-left: 20px;
+  aspect-ratio: 4/5;
+  cursor: pointer;
+}
+
+.XIconForShowResultsModal {
+  width: 25px;
+  height: 25px;
+  aspect-ratio: 1/1;
+  fill: var(--Neutral-100, #e1e1e1);
+  stroke-width: 6px;
+  stroke: var(--Neutral-100, #e1e1e1);
+  cursor: pointer;
+}
+
+.ResultModalTopNavContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+}
+
+.downArrowLightIcon {
+  width: 10.616px;
+  height: 6.016px;
+  flex-shrink: 0;
+  aspect-ratio: 10.62/6.02;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.stationServicesDiv {
+  display: flex;
+  align-items: center;
+}
+
+/* GOOGLE MAP CONTAINER */
+.googleMapContainerWrapper {
+  width: 100%;
+  height: 100%;
+  background-color: #e0e0e0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.googleMapContainerWrapper > div {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.currentLocationButton {
+  all: unset;
+  cursor: pointer;
+  margin-right: 150px;
+}
+
+.locationButton {
+  width: 16px;
+  height: 16px;
+  aspect-ratio: 1/1;
+  margin-right: 10px;
 }

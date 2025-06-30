@@ -22,7 +22,7 @@
   flex-shrink: 0;
 }
 
-.forPersonal{
+.forPersonal {
   width: 139px;
   height: 52px;
   flex-shrink: 0;
@@ -51,15 +51,15 @@
 
 /* Add a red background color to navbar links on hover */
 .navbar a:hover {
-  background-color: rgb(255, 40, 0);
+  background-color: #f57708;
 }
 
 .menu-icon:hover {
-  color: rgb(255, 40, 0);
+  color: #f57708;
 }
 
 .loginButton {
-  background: linear-gradient(90deg, #ED560E 0%, #F57708 45.19%, #FFA000 100%);
+  background: linear-gradient(90deg, #ed560e 0%, #f57708 45.19%, #ffa000 100%);
   width: 120px;
   height: 49px;
   gap: 12px;
@@ -125,4 +125,36 @@
     width: 100%;
     margin-top: 10px;
   }
+}
+
+.NavBarUnderTop {
+  display: flex;
+  height: 70px;
+  padding: 0px 167px;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  align-self: stretch;
+  border-top: 0.75px solid var(--Neutral-200, #c0c0c0);
+  border-bottom: 0.75px solid var(--Neutral-200, #c0c0c0);
+  background: #fff;
+}
+
+.NavBarUnderTopList {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin: 10px;
+  list-style-type: none;
+}
+
+.listItemsNav {
+  color: #000;
+  font-family: "Test Calibre";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 120%;
+  margin-left: 20px;
+  cursor: pointer;
 }

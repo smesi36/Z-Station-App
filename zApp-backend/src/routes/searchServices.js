@@ -20,7 +20,7 @@ router.get("/locations/services", async (req, res) => {
         const andConditions = searchWords.map((word) => {
           const wordRegex = new RegExp(word, "i");
 
-          return {
+          return {                                    
             $or: [
               { services: { $regex: wordRegex } },
               { "location.address": { $regex: wordRegex } },

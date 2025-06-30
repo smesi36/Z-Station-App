@@ -5,7 +5,6 @@ export default function HomeSearch() {
   return (
     <div>
       <StationFinder />  
-      <InteractiveMap />
     </div>
   )
 }
