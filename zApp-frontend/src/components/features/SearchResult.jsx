@@ -65,39 +65,44 @@ const SearchResult = ({
         <p>Loading results...</p>
       ) : stations.length > 0 ? (
         stations.map((station) => (
-          // ✅ FIX: Added a robust fallback key to prevent errors
-          <div key={station.id || `${station.name}-${station.location?.latitude}`} className={Styles.stationCard}>
+          <div
+            key={station.id || `${station.name}-${station.location?.latitude}`}
+            className={Styles.stationCard}
+          >
             <h4 className={Styles.stationNameH4}>{station.name}</h4>
             {station.location && (
               <p className={Styles.stationLocationP}>{station.location.city}</p>
             )}
 
-            {/* DISPLAYING FILTERED SERVICES */}
-            {station.services?.length > 0 && selectedFilters.length > 0 && (
-              <div className={Styles.stationServicesDiv}>
-                {station.services
-                  ?.filter((service) =>
-                    selectedFilters.some((filter) =>
-                      service
-                        .replace(/[\s_]/g, "")
-                        .toLowerCase()
-                        .includes(filter.replace(/[\s_]/g, "").toLowerCase())
-                    )
-                  )
-                  .map((service) => (
+            {/* === THIS SECTION HAS BEEN UPDATED WITH THE FIX === */}
+            <div className={Styles.stationServicesDiv}>
+              {station.services?.map((service) => {
+                // Normalize the service name from station data (e.g., "Car Wash" -> "carwash")
+                const normalizedService = service.replace(/[\s_]/g, "").toLowerCase();
+
+                // Check if any selected filters match this normalized service
+                const isFilterActive = selectedFilters.some(
+                  (filter) => filter.replace(/[\s_]/g, "").toLowerCase() === normalizedService
+                );
+
+                // Only render the tag if a matching filter is active
+                return (
+                  isFilterActive && (
                     <div key={service} className={Styles.serviceTagContainer}>
                       <p className={Styles.serviceTagName}>
                         {service.replace(/([A-Z])/g, " $1").trim()}
-                        <img 
-                           src={closeTagIcon} 
-                           alt={`Remove ${service} filter`}
-                           onClick={() => handleFilterChange(service)} // Assumes handleFilterChange can remove specific services
+                        <img
+                          src={closeTagIcon}
+                          alt={`Remove ${service} filter`}
+                          onClick={() => handleFilterChange(service)}
                         />
                       </p>
                     </div>
-                  ))}
-              </div>
-            )}
+                  )
+                );
+              })}
+            </div>
+
             <p>
               <span className={Styles.stationOpenNowSpan}>Open Now: </span>
               {station.is_open_now ? (
