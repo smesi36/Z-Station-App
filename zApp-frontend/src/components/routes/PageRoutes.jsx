@@ -2,6 +2,8 @@ import { Route, Routes } from "react-router-dom";
 import HomeMain from "../pages/HomeMain";
 import HomeResult from "../pages/HomeResult";
 import HomeSearch from "../pages/HomeSearch";
+import MobileSearchUI from "../mobileUI-e/MobileSearchUI"; // Importing Erekle's mobile screen component
+
 
 export default function PageRoutes() {
   return (
@@ -10,6 +12,8 @@ export default function PageRoutes() {
         <Route path="/" element={<HomeMain />} />
         <Route path="/search" element={<HomeSearch />} />
         <Route path="/result" element={<HomeResult />} />
+        {/* Erekle's mobile screen route */}
+        <Route path="/mobile-ui" element={<MobileSearchUI />} />
       </Routes>
     </div>
   );

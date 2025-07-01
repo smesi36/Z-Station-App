@@ -5,6 +5,10 @@ import axios from "axios";
 // Import the MarkerClusterer from the Google Maps JavaScript API
 import { MarkerClusterer } from "@googlemaps/markerclusterer";
 
+// use location hook to access the current URL to determine what screen is being used.
+// e.g., if mobile layout, then adjust map size to fit mobile screen.
+import { useLocation } from "react-router-dom";
+
 // Import the utility to dynamically render prices in the price markers
 import { generatePriceMarker } from "../utils/generatePriceMarker.js";
 
@@ -16,10 +20,15 @@ const containerStyle = {
   height: "800px",
 };
 
-// Center on the coordinates of New Zealand
-const center = {
-  lat: -41.2865,
-  lng: 174.7762,
+// 📝 Custom hook to track screen size (currently unused, added for future enhancements)
+const useScreenSize = () => {
+  const [screenSize, setScreenSize] = useState(window.innerWidth);
+  useEffect(() => {
+    const handleResize = () => setScreenSize(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+  return screenSize;
 };
 
 export default function InteractiveMap({
@@ -29,10 +38,20 @@ export default function InteractiveMap({
   const [stations, setStations] = useState([]);
   const mapRef = useRef(null); // Create a ref to store the map instance
   const [googleMaps, setGoogleMaps] = useState(null);
+  // useLocation hook to access the current URL to determine what screen is being used.
+  const location = useLocation();
 
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
   });
+
+  // declare mobile UI pathway to be /mobile-ui
+  const isMobileUI = location.pathname === "/mobile-ui";
+  // Zoom level for the desktop layout
+  const zoom = 5.9;
+  // Center on the coordinates of New Zealand
+  const center = { lat: -41.2865, lng: 174.7762 };
+  //   {lat: -40.6, lng: 172.5 }
 
   // Load the Maps API modules
   useEffect(() => {
@@ -57,8 +76,18 @@ export default function InteractiveMap({
     fetchStations();
   }, []);
 
+  // Set the center of the map based on whether it's mobile or desktop
+
   const handleMapLoad = (map) => {
     mapRef.current = map; // Store the map instance for future reference
+
+    if (isMobileUI && googleMaps) {
+      const bounds = new googleMaps.LatLngBounds(
+        { lat: -45.2, lng: 169.3 },
+        { lat: -37.3, lng: 176.3 }
+      );
+      map.fitBounds(bounds); // Fit the map to the bounds for mobile UI
+    }
   };
 
   useEffect(() => {
@@ -162,9 +191,8 @@ export default function InteractiveMap({
   return (
     <GoogleMap
       mapContainerStyle={containerStyle}
-      center={center}
-      zoom={5.9}
       onLoad={handleMapLoad}
+      {...(!isMobileUI && { center: center, zoom })} // Set center and zoom for desktop
     />
   );
 }

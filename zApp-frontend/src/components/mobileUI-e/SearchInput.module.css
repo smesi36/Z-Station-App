@@ -1,0 +1,23 @@
+.searchWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.searchBox {
+  width: 100%;
+  padding: 12px 44px 12px 16px;
+  border-radius: 24px;
+  border: none;
+  font-size: 14px;
+}
+
+.searchIcon {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+}
+
+
