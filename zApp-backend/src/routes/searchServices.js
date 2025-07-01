@@ -8,9 +8,11 @@ router.get("/locations/services", async (req, res) => {
     const { service, search } = req.query;
     let filter = {};
 
+    // If the service query parameter is provided, filter by services
     if (service && service.length > 0) {
       const servicesArray = Array.isArray(service) ? service : [service];
-      filter.services = { $in: servicesArray };
+      const servicesRegex = servicesArray.map((s) => new RegExp(s, "i")); 
+      filter.services = { $all: servicesRegex }; // This finds stations with ALL of the services
     }
 
     if (search) {
@@ -20,7 +22,7 @@ router.get("/locations/services", async (req, res) => {
         const andConditions = searchWords.map((word) => {
           const wordRegex = new RegExp(word, "i");
 
-          return {                                    
+          return {
             $or: [
               { services: { $regex: wordRegex } },
               { "location.address": { $regex: wordRegex } },

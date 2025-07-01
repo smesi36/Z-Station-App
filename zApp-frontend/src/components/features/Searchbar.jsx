@@ -1,5 +1,4 @@
-import React from "react";
-import Styles from "./StationFinder.module.css"; 
+import Styles from "./Searchbar.module.css";
 import LocationIcons from "../../images/LocationIcons.png";
 import priceToggle from "../../images/priceToggle.png";
 
@@ -44,7 +43,7 @@ const Searchbar = ({
       />
       {loading && <p>Loading results...</p>}
       {error && (
-        <div>
+        <div className={Styles.errorMessage}> 
           <strong>Error!</strong> <span>{error}</span>
         </div>
       )}

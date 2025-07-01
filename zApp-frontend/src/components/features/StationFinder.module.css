@@ -87,113 +87,6 @@
   box-shadow: 0px 3px 4px 3px rgba(0, 0, 0, 0.2) inset;
 }
 
-/* SEARCH RESULTS CONTAINER */
-.searchResultsContainer {
-  position: absolute;
-  z-index: 2;
-  left: 150px;
-  top: calc(50px + 211px + 20px);
-  width: 453px;
-  max-height: calc(100vh - (50px + 211px + 20px + 50px));
-  overflow-y: auto;
-  display: flex;
-  padding: 30px 50px;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 16px;
-  border-radius: 50px;
-  background: var(--Black-0, #fff);
-  backdrop-filter: blur(15px);
-  margin-left: 0;
-  margin-top: 40px;
-}
-
-.stationCard{
-  display: flex;
-padding: 16px 0px 24px 0px;
-flex-direction: column;
-align-items: flex-start;
-gap: 16px;
-align-self: stretch;
-border-bottom: 0.75px solid var(--Neutral-200, #C0C0C0);
-background: #FFF;
-}
-
-.stationNameH4 {
-  color: var(--secondary-500-main, #272270);
-  font-family: "Test Calibre";
-  font-size: 32px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 120%;
-}
-
-.stationLocationP {
-  color: var(--neutral-500-main, #353535);
-  font-family: "Test Calibre";
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 150%;
-}
-
-.stationOpenNowSpan {
-  color: var(--Black-5, #2a2a2a);
-  font-family: "Test Calibre";
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 150%;
-}
-
-.filterIcon {
-  width: 16px;
-  height: 16px;
-  flex-shrink: 0;
-  aspect-ratio: 1/1;
-  cursor: pointer;
-}
-
-.showResultsIcon {
-  width: 16px;
-  height: 20px;
-  flex-shrink: 0;
-  margin-left: 20px;
-  aspect-ratio: 4/5;
-  cursor: pointer;
-}
-
-.XIconForShowResultsModal {
-  width: 25px;
-  height: 25px;
-  aspect-ratio: 1/1;
-  fill: var(--Neutral-100, #e1e1e1);
-  stroke-width: 6px;
-  stroke: var(--Neutral-100, #e1e1e1);
-  cursor: pointer;
-}
-
-.ResultModalTopNavContainer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  align-self: stretch;
-}
-
-.downArrowLightIcon {
-  width: 10.616px;
-  height: 6.016px;
-  flex-shrink: 0;
-  aspect-ratio: 10.62/6.02;
-  margin-left: 10px;
-  cursor: pointer;
-}
-
-.stationServicesDiv {
-  display: flex;
-  align-items: center;
-}
-
 /* GOOGLE MAP CONTAINER */
 .googleMapContainerWrapper {
   width: 100%;
@@ -221,4 +114,79 @@ background: #FFF;
   height: 16px;
   aspect-ratio: 1/1;
   margin-right: 10px;
+}
+
+
+/* LOCATION CONSENT MODAL */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it's above other content */
+}
+
+.locationConsentModal {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  max-width: 400px;
+  text-align: center;
+  z-index: 1001; /* Ensure modal content is above overlay */
+}
+
+.locationConsentModal h2 {
+  margin-top: 0;
+  color: #333;
+}
+
+.locationConsentModal p {
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.privacyNote {
+  font-size: 0.9em;
+  color: #888;
+  margin-top: 15px;
+}
+
+.modalActions {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.modalActions button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s ease;
+}
+
+.confirmButton {
+  background-color: #007bff; /* Blue for confirmation */
+  color: white;
+}
+
+.confirmButton:hover {
+  background-color: #0056b3;
+}
+
+.cancelButton {
+  background-color: #f0f0f0; /* Light gray for cancel */
+  color: #333;
+}
+
+.cancelButton:hover {
+  background-color: #e0e0e0;
 }

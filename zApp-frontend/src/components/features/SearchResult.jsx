@@ -1,10 +1,10 @@
-import React from "react";
-import Styles from "./StationFinder.module.css"; 
+import Styles from "./SearchResult.module.css";
 import filterIcon from "../../images/filterIcons.png";
 import showResultsIcon from "../../images/showResultsIcons.png";
 import XIconForShowResultsModal from "../../images/XIconForShowResultsModal.png";
-import filterTag from "../../images/filterTag.png";
 import { icons } from "../utils/IconsLibrary";
+
+const closeTagIcon = icons.closeTagIcon.url;
 
 const SearchResult = ({
   stations,
@@ -65,39 +65,44 @@ const SearchResult = ({
         <p>Loading results...</p>
       ) : stations.length > 0 ? (
         stations.map((station) => (
-          <div key={station.id} className={Styles.stationCard}>
+          // ✅ FIX: Added a robust fallback key to prevent errors
+          <div key={station.id || `${station.name}-${station.location?.latitude}`} className={Styles.stationCard}>
             <h4 className={Styles.stationNameH4}>{station.name}</h4>
             {station.location && (
-              <p className={Styles.stationLocationP}>
-                {station.location.city}
-              </p>
+              <p className={Styles.stationLocationP}>{station.location.city}</p>
             )}
+
+            {/* DISPLAYING FILTERED SERVICES */}
             {station.services?.length > 0 && selectedFilters.length > 0 && (
               <div className={Styles.stationServicesDiv}>
                 {station.services
-                  .filter((service) =>
+                  ?.filter((service) =>
                     selectedFilters.some((filter) =>
-                      service.toLowerCase().includes(filter.toLowerCase())
+                      service
+                        .replace(/[\s_]/g, "")
+                        .toLowerCase()
+                        .includes(filter.replace(/[\s_]/g, "").toLowerCase())
                     )
                   )
-                  .map((service, index) => (
-                    <div key={index} className={Styles.serviceTagContainer}>
-                      <img
-                        src={filterTag}
-                        className={Styles.filterTag}
-                        alt="Filter Tag"
-                      />
+                  .map((service) => (
+                    <div key={service} className={Styles.serviceTagContainer}>
                       <p className={Styles.serviceTagName}>
                         {service.replace(/([A-Z])/g, " $1").trim()}
+                        <img 
+                           src={closeTagIcon} 
+                           alt={`Remove ${service} filter`}
+                           onClick={() => handleFilterChange(service)} // Assumes handleFilterChange can remove specific services
+                        />
                       </p>
                     </div>
                   ))}
               </div>
             )}
             <p>
-              <span className={Styles.stationOpenNowSpan}>Open Now</span>
+              <span className={Styles.stationOpenNowSpan}>Open Now: </span>
               {station.is_open_now ? (
                 <span>
+                  Yes{" "}
                   <img
                     src={downArrowLightIcon}
                     className={Styles.downArrowLightIcon}
@@ -111,7 +116,7 @@ const SearchResult = ({
           </div>
         ))
       ) : (
-        searchTerm && <p>No ZStations Services found for "{searchTerm}".</p>
+        searchTerm && <p>No Z Stations found for "{searchTerm}".</p>
       )}
     </div>
   );
