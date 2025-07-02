@@ -1,6 +1,8 @@
 import { useState } from "react";
 import styles from "./FuelDropdown.module.css";
 
+import { icons } from "../utils/IconsLibrary.js"; 
+
 // fuel options
 
 const fuelOptions = ["Z91 Unleaded", "ZX Premium", "Z Diesel"];
@@ -15,7 +17,7 @@ export default function FuelDropdown() {
         onClick={() => setIsOpen(!isOpen)}
         className={styles.dropdownButton}
       >
-        Fuel type ▾
+        Fuel type <img src={icons.downArrow.url} alt="Down Arrow" />
       </button>
       {isOpen && (
         <ul className={styles.dropdownList}>
