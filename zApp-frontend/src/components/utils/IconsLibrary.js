@@ -33,6 +33,11 @@ const closeIcon = {
   scaledSize: { width: 12, height: 12 },
 };
 
+const closeTagIcon = {
+  url: `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M0.8 8L0 7.2L3.2 4L0 0.8L0.8 0L4 3.2L7.2 0L8 0.8L4.8 4L8 7.2L7.2 8L4 4.8L0.8 8Z" fill="white"/></svg>`,
+  scaledSize: { width: 12, height: 12 },
+};
+
 // Pin (orange, 24x24)
 const pinOrangeIcon = {
   url: `data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'><mask id='mask0_44_506' style='mask-type:alpha' maskUnits='userSpaceOnUse' x='0' y='0' width='24' height='24'><rect width='24' height='24' fill='%23D9D9D9'/></mask><g mask='url(%23mask0_44_506)'><path d='M12 12C12.55 12 13.0208 11.8042 13.4125 11.4125C13.8042 11.0208 14 10.55 14 10C14 9.45 13.8042 8.97917 13.4125 8.5875C13.0208 8.19583 12.55 8 12 8C11.45 8 10.9792 8.19583 10.5875 8.5875C10.1958 8.97917 10 9.45 10 10C10 10.55 10.1958 11.0208 10.5875 11.4125C10.9792 11.8042 11.45 12 12 12ZM12 22C9.31667 19.7167 7.3125 17.5958 5.9875 15.6375C4.6625 13.6792 4 11.8667 4 10.2C4 7.7 4.80417 5.70833 6.4125 4.225C8.02083 2.74167 9.88333 2 12 2C14.1167 2 15.9792 2.74167 17.5875 4.225C19.1958 5.70833 20 7.7 20 10.2C20 11.8667 19.3375 13.6792 18.0125 15.6375C16.6875 17.5958 14.6833 19.7167 12 22Z' fill='%23ED560E'/></g></svg>`,
@@ -155,7 +160,6 @@ const areaPinBlueIcon = {
   scaledSize: { width: 40, height: 40 },
 };
 
-
 // Lowest fuel price marker (dark blue, 40x51)
 const fuelPrcMarkerLowest = {
   url: `data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='51' viewBox='0 0 40 51' fill='none'><path d='M20 0.75C25.2264 0.75 29.8225 2.57896 33.7988 6.24609C37.7608 9.90014 39.75 14.8089 39.75 21C39.75 25.0999 38.12 29.583 34.8242 34.4541C31.5557 39.2848 26.6167 44.5229 20 50.1699C13.3833 44.5229 8.4443 39.2848 5.17578 34.4541C1.88002 29.583 0.25 25.0999 0.25 21C0.25 14.8089 2.2392 9.90014 6.20117 6.24609C10.1775 2.57896 14.7736 0.75 20 0.75Z' fill='url(%23paint0_linear_72_1967)' stroke='%233931AF' stroke-width='0.5'/><defs><linearGradient id='paint0_linear_72_1967' x1='0' y1='0.5' x2='40' y2='0.5' gradientUnits='userSpaceOnUse'><stop stop-color='%23272270'/><stop offset='1' stop-color='%233931AF'/></linearGradient></defs></svg>`,
@@ -173,9 +177,8 @@ const fuelPrcMarkerLowestTest = {
       </linearGradient>
     </defs>
   </svg>`,
-  scaledSize: { width: 40, height: 51},
+  scaledSize: { width: 40, height: 51 },
 };
-
 
 // Fuel price marker (light, 40x51)
 const fuelPriceMarkerOther = {
@@ -195,6 +198,7 @@ export const icons = {
   downArrowBoldIcon: downArrowIcon,
   downArrowLightIcon: downArrowLightIcon,
   closeIcon: closeIcon,
+  closeTagIcon: closeTagIcon,
   orangePinIcon: pinOrangeIcon,
   hambrgrMenu: menuIconHam,
   pinLocationSmallIcon: pinLocationSmIcon,
@@ -229,4 +233,3 @@ export const icons = {
 // const searchSmallIcon = icons.searchIcon;
 // const orangePinIcon = icons.pinOrangeIcon;
 // const fuelPriceMarkerLowest = icons.fuelPrcMarkerLowest;
-

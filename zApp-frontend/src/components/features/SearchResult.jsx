@@ -1,10 +1,10 @@
-import React from "react";
-import Styles from "./StationFinder.module.css"; 
+import Styles from "./SearchResult.module.css";
 import filterIcon from "../../images/filterIcons.png";
 import showResultsIcon from "../../images/showResultsIcons.png";
 import XIconForShowResultsModal from "../../images/XIconForShowResultsModal.png";
-import filterTag from "../../images/filterTag.png";
 import { icons } from "../utils/IconsLibrary";
+
+const closeTagIcon = icons.closeTagIcon.url;
 
 const SearchResult = ({
   stations,
@@ -65,39 +65,49 @@ const SearchResult = ({
         <p>Loading results...</p>
       ) : stations.length > 0 ? (
         stations.map((station) => (
-          <div key={station.id} className={Styles.stationCard}>
+          <div
+            key={station.id || `${station.name}-${station.location?.latitude}`}
+            className={Styles.stationCard}
+          >
             <h4 className={Styles.stationNameH4}>{station.name}</h4>
             {station.location && (
-              <p className={Styles.stationLocationP}>
-                {station.location.city}
-              </p>
+              <p className={Styles.stationLocationP}>{station.location.city}</p>
             )}
-            {station.services?.length > 0 && selectedFilters.length > 0 && (
-              <div className={Styles.stationServicesDiv}>
-                {station.services
-                  .filter((service) =>
-                    selectedFilters.some((filter) =>
-                      service.toLowerCase().includes(filter.toLowerCase())
-                    )
-                  )
-                  .map((service, index) => (
-                    <div key={index} className={Styles.serviceTagContainer}>
-                      <img
-                        src={filterTag}
-                        className={Styles.filterTag}
-                        alt="Filter Tag"
-                      />
+
+            {/* === THIS SECTION HAS BEEN UPDATED WITH THE FIX === */}
+            <div className={Styles.stationServicesDiv}>
+              {station.services?.map((service) => {
+                // Normalize the service name from station data (e.g., "Car Wash" -> "carwash")
+                const normalizedService = service.replace(/[\s_]/g, "").toLowerCase();
+
+                // Check if any selected filters match this normalized service
+                const isFilterActive = selectedFilters.some(
+                  (filter) => filter.replace(/[\s_]/g, "").toLowerCase() === normalizedService
+                );
+
+                // Only render the tag if a matching filter is active
+                return (
+                  isFilterActive && (
+                    <div key={service} className={Styles.serviceTagContainer}>
                       <p className={Styles.serviceTagName}>
                         {service.replace(/([A-Z])/g, " $1").trim()}
+                        <img
+                          src={closeTagIcon}
+                          alt={`Remove ${service} filter`}
+                          onClick={() => handleFilterChange(service)}
+                        />
                       </p>
                     </div>
-                  ))}
-              </div>
-            )}
+                  )
+                );
+              })}
+            </div>
+
             <p>
-              <span className={Styles.stationOpenNowSpan}>Open Now</span>
+              <span className={Styles.stationOpenNowSpan}>Open Now: </span>
               {station.is_open_now ? (
                 <span>
+                  Yes{" "}
                   <img
                     src={downArrowLightIcon}
                     className={Styles.downArrowLightIcon}
@@ -111,7 +121,7 @@ const SearchResult = ({
           </div>
         ))
       ) : (
-        searchTerm && <p>No ZStations Services found for "{searchTerm}".</p>
+        searchTerm && <p>No Z Stations found for "{searchTerm}".</p>
       )}
     </div>
   );
