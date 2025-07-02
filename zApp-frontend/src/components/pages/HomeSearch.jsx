@@ -11,8 +11,6 @@ export default function HomeSearch() {
       <NavbarTop />
       <NavBarUnderTop />
       <StationFinder />
-      {/* <InteractiveMap /> */}
-      {/* <Footer /> */}
     </div>
   );
 }
