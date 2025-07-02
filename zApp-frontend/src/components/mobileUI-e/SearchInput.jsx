@@ -7,7 +7,7 @@ export default function SearchInput() {
       <input
         type="text"
         // onChange={handleSearchInput}
-        placeholder="Search by locatin, services, fuel"
+        placeholder="Search by location, services, fuel"
         className={styles.searchBox}
       />
       <img src={icons.searchIcon.url} alt="Search" className={styles.searchIcon} />
