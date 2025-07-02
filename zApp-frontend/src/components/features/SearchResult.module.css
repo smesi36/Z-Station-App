@@ -15,18 +15,18 @@
   background: var(--Black-0, #fff);
   backdrop-filter: blur(15px);
   margin-left: 0;
-  margin-top: 40px;
+  margin-top: 0px;
 }
 
-.stationCard{
+.stationCard {
   display: flex;
   padding: 16px 0px 24px 0px;
   flex-direction: column;
   align-items: flex-start;
   gap: 16px;
   align-self: stretch;
-  border-bottom: 0.75px solid var(--Neutral-200, #C0C0C0);
-  background: #FFF;
+  border-bottom: 0.75px solid var(--Neutral-200, #c0c0c0);
+  background: #fff;
 }
 
 .stationNameH4 {
@@ -112,12 +112,37 @@
   padding: 4px 12px;
   width: 103px;
   height: 32px;
-  color: #FFFFFF; /* White text color to contrast with the dark background */
+  color: #ffffff; /* White text color to contrast with the dark background */
   font-family: "Test Calibre";
-  background-color: var(--Secondary-700, #1C194C);
-  font-size: 16px;
+  background-color: var(--Secondary-700, #1c194c);
+  font-size: 14px;
   font-style: normal;
   font-weight: bolder;
   border-radius: 16px;
 }
 
+/* Add this to SearchResult.module.css to fix the layout */
+
+.filterOptionsDropdown label {
+  display: flex;
+
+  gap: 8px;
+  flex-direction: row;
+  cursor: pointer;
+}
+
+.filterOptionsDropdown input[type="checkbox"] {
+  display: inline-block;
+  visibility: visible;
+  appearance: checkbox;
+  width: auto;
+  height: auto;
+  margin-right: 8px;
+}
+
+.serviceTagContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+}

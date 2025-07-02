@@ -28,8 +28,8 @@ const libraries = ["places", "marker"];
 const StationFinder = () => {
   // === STATE HOOKS ===
   const [stations, setStations] = useState([]);
-  const [inputValue, setInputValue] = useState(""); 
-  const [searchTerm, setSearchTerm] = useState(""); 
+  const [inputValue, setInputValue] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
   const [selectedFilters, setSelectedFilters] = useState([]);
   const [currentLocation, setCurrentLocation] = useState(null);
   const [selectedStation, setSelectedStation] = useState(null);
@@ -51,8 +51,35 @@ const StationFinder = () => {
   const { isLoaded, loadError } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: import.meta.env.VITE_MAPS_API_KEY,
-    libraries: libraries, 
+    libraries: libraries,
   });
+
+  useEffect(() => {
+    // Only fetch if there are no filters/search/location
+    if (!searchTerm && selectedFilters.length === 0 && !currentLocation) {
+      const abortController = new AbortController();
+      const fetchAllStations = async () => {
+        setLoading(true);
+        setError(null);
+        try {
+          const response = await axios.get(
+            `${API_BASE_URL}/api/services/locations/services`,
+            { signal: abortController.signal }
+          );
+          setStations(response.data);
+        } catch (err) {
+          if (!axios.isCancel(err)) {
+            setError("Failed to load station data.");
+          }
+        } finally {
+          setLoading(false);
+        }
+      };
+      fetchAllStations();
+      return () => abortController.abort();
+    }
+    // eslint-disable-next-line
+  }, []);
 
   // === MAIN EFFECT FOR DATA FETCHING ===
   useEffect(() => {
@@ -200,8 +227,6 @@ const StationFinder = () => {
       });
       map.fitBounds(bounds);
     }
-
-    
   }, [stations, isLoaded, googleMaps]);
 
   // === EVENT HANDLERS ===
@@ -244,6 +269,25 @@ const StationFinder = () => {
     setSelectedFilters([]);
     setCurrentLocation(null);
     setError(null);
+    setUiState((prev) => ({ ...prev, resultsVisible: false }));
+
+    // Refetch all stations to show all clusters again
+    const fetchAllStations = async () => {
+      setLoading(true);
+      setError(null);
+      try {
+        const response = await axios.get(
+          `${API_BASE_URL}/api/services/locations/services`
+        );
+        setStations(response.data);
+      } catch (err) {
+        setError("Failed to load station data.");
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchAllStations();
+
     if (mapRef.current) {
       mapRef.current.panTo(DEFAULT_CENTER);
       mapRef.current.setZoom(6);

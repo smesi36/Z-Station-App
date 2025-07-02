@@ -1,6 +1,6 @@
 import Styles from "./Searchbar.module.css";
 import LocationIcons from "../../images/LocationIcons.png";
-import priceToggle from "../../images/priceToggle.png";
+import ToggleSwitch from "../mobileUI-e/ToggleSwitch";
 
 const Searchbar = ({
   searchTerm,
@@ -12,7 +12,7 @@ const Searchbar = ({
   error,
 }) => {
   return (
-    <div className={Styles.search}>
+    <div className={Styles.searchBarContainer}>
       <h1 className={Styles.h1Search}>Search Z Stations</h1>
       <div className={Styles.inputWrapper}>
         <input
@@ -33,17 +33,17 @@ const Searchbar = ({
         onClick={handleUseCurrentLocation}
         className={Styles.currentLocationButton}
       >
-        <img src={LocationIcons} className={Styles.locationButton} alt="Location Icon" />
+        <img
+          src={LocationIcons}
+          className={Styles.locationButton}
+          alt="Location Icon"
+        />
         Use my current Location
       </button>
-      <img
-        src={priceToggle}
-        className={Styles.priceToggle}
-        alt="Show price"
-      />
+      <ToggleSwitch />
       {loading && <p>Loading results...</p>}
       {error && (
-        <div className={Styles.errorMessage}> 
+        <div className={Styles.errorMessage}>
           <strong>Error!</strong> <span>{error}</span>
         </div>
       )}

@@ -16,7 +16,7 @@ const SearchResult = ({
   handleFilterChange,
   onClose,
 }) => {
-  const downArrowLightIcon = icons.downArrowLightIcon.url;
+  const downArrowLightIcon = icons.downArrow.url;
 
   return (
     <div className={Styles.searchResultsContainer}>
@@ -74,15 +74,18 @@ const SearchResult = ({
               <p className={Styles.stationLocationP}>{station.location.city}</p>
             )}
 
-            {/* === THIS SECTION HAS BEEN UPDATED WITH THE FIX === */}
+            {/* SERVICE TAGS */}
             <div className={Styles.stationServicesDiv}>
               {station.services?.map((service) => {
-                // Normalize the service name from station data (e.g., "Car Wash" -> "carwash")
-                const normalizedService = service.replace(/[\s_]/g, "").toLowerCase();
+                const normalizedService = service
+                  .replace(/[\s_]/g, "")
+                  .toLowerCase();
 
                 // Check if any selected filters match this normalized service
                 const isFilterActive = selectedFilters.some(
-                  (filter) => filter.replace(/[\s_]/g, "").toLowerCase() === normalizedService
+                  (filter) =>
+                    filter.replace(/[\s_]/g, "").toLowerCase() ===
+                    normalizedService
                 );
 
                 // Only render the tag if a matching filter is active
@@ -121,7 +124,7 @@ const SearchResult = ({
           </div>
         ))
       ) : (
-        searchTerm && <p>No Z Stations found for "{searchTerm}".</p>
+        searchTerm && <p>No Z Station Services found for {searchTerm}.</p>
       )}
     </div>
   );
