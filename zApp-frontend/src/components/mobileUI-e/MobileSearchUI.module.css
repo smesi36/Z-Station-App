@@ -5,25 +5,29 @@
 }
 
 .mobileContainer {
-  width: 390px;
+  max-width: 390px;
+  width: 100%;
   height: 844px;
-  font-family: "Inter", sans-serif;
+  /* height: 100vh; for true mobile layout*/
+  font-family: var(--primary-font);
   display: flex;
   flex-direction: column;
   /* overflow: hidden; */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
 }
 
 .mNavbar {
   background: white;
-  height: 56px;
-  padding: 0 16px;
+  height: 134px;
+  padding: 48px 16px 8px 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 .zLogo {
-  height: 28px;
+  height: 54px;
 }
 
 .navIcons img {
@@ -33,16 +37,19 @@
 
 .mSearchBar {
   display: flex;
+  align-items: center;
   flex-direction: column;
+  height: 211px;
   background: linear-gradient(90deg, #ed560e 0%, #f57708 45.19%, #ffa000 100%);
   padding: 16px;
-  color: white;
 }
 
 .searchTitle {
-  font-size: 20px;
-  font-weight: bold;
+  /* font-size: var(--h4-size); */
+  font-size: 32px;
+  font-weight: 700;
   margin-bottom: 12px;
+  color: white;
 }
 
 .locationRow {
@@ -51,14 +58,15 @@
   gap: 8px;
   color: #642406;
   margin-top: 12px;
+  margin-right: 135px;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
 }
 
 .controlsRow {
-    margin-top: 12px;
-    display: flex;
-    gap: 12px;
-    align-items: center;
+  margin-top: 12px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
 }

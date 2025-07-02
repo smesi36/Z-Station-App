@@ -3,11 +3,24 @@ import ToggleSwitch from "./ToggleSwitch.jsx";
 import FuelDropdown from "./FuelDropdown.jsx";
 import SearchInput from "./SearchInput.jsx";
 
+import { useState } from "react";
+
 import { icons } from "../utils/IconsLibrary.js";
 
 import styles from "./MobileSearchUI.module.css"; // Assuming you have a CSS module for styles
 
 export default function MobileSearchUI() {
+  const [showPrices, setShowPrices] = useState(false);
+
+  const handleToggle = (checked) => {
+    setShowPrices(checked);
+  };
+
+  const handleFuelSelect = (fuel) => {
+    console.log("Selected Fuel:", fuel); // for later
+  };
+
+
   return (
     <div className={styles.mobileContainer}>
       <header className={styles.mNavbar}>
@@ -25,8 +38,9 @@ export default function MobileSearchUI() {
           <p>Use my current location</p>
         </div>
         <div className={styles.controlsRow}>
-          <ToggleSwitch />
-          <FuelDropdown />
+          <ToggleSwitch onToggle={handleToggle} />
+          {/* Conditional rendering of FuelDropdown */}
+          {showPrices && <FuelDropdown onSelect={handleFuelSelect} />}
         </div>
       </div>
       <InteractiveMap />
