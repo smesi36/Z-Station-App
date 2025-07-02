@@ -3,14 +3,22 @@
 }
 
 .dropdownButton {
-  background-color: #3931af;
+  display: flex;
+  /* background-color: #3931af; */
+  background: linear-gradient(90deg, #272270 0%, #3931af 100%);
   color: white;
-  padding: 6px 12px;
+  padding: 0 10px;
+  justify-content: center;
+  align-items: center;
+  width: 106px;
+  height: 33px;
+  gap: 10px;
   border: none;
   border-radius: 20px;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
   font-size: 14px;
+  flex-shrink: 0;
 }
 
 .dropdownList {
