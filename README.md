@@ -1,12 +1,24 @@
-# Z Energy Station Locator App
+## Z Energy Station Locator App
 
 A full-stack web app that displays Z Energy fuel station locations, available services, and real-time fuel prices on an interactive map with regional clustering.
 
 ---
 
+## Table of Contents
+
+- [About The Project](#about-the-project)
+- [Folder Structure](#folder-structure)
+- [Built With](#built-with)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [Contact](#contact)
+
 ## About The Project
 
-This document provides a guide to setting up and running both the frontend and backend services for the Zapp application. It includes lists of technologies used, setup instructions, and available scripts.
+This is a full stack app built with React and Node.js using Mongo DB database and Google interactive maps. The app will provide location-based search functionalities, also filtering by services and fuel prices. 
 
 ---
 
