@@ -6,17 +6,17 @@ A full-stack web app that displays Z Energy fuel station locations, available se
 
 ## 📖 Table of Contents
 
-- [About The Project](#about-the-project)
-- [Folder Structure](#-folder-structure)
-- [Built With](#built-with)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [Contact](#contact)
+- [📌 About The Project](#-about-the-project)
+- [📁 Folder Structure](#-folder-structure)
+- [🛠️ Built With](#-built-with)
+- [⚙️ Getting Started](#-getting-started)
+  - [📦 Prerequisites](#-prerequisites)
+  - [📥 Installation](#-installation)
+- [🚀 Usage](#-usage)
+- [🤝 Contributing](#-contributing)
+- [📫 Contact](#-contact)
 
-## About The Project
+## 📌 About The Project
 
 This is a full stack app built with React and Node.js using Mongo DB database and Google interactive maps. The app will provide location-based search functionalities, also filtering by services and fuel prices. 
 
@@ -42,7 +42,7 @@ Z-Station-App/
 ```
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## Built With
+## 🛠️ Built With
 
 ### Frontend
 
@@ -62,11 +62,11 @@ Z-Station-App/
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## Getting Started
+## ⚙️ Getting Started
 
 To get a local copy up and running, follow these simple steps.
 
-### Prerequisites
+### 📦 Prerequisites
 
 * npm
     ```bash
@@ -74,7 +74,7 @@ To get a local copy up and running, follow these simple steps.
     ```
 * Node.js (v14 or later)
 
-### Installation
+### 📥 Installation
 
 1.  Clone the repo
     ```bash
