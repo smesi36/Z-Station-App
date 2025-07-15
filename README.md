@@ -18,21 +18,22 @@ A full-stack web app that displays Z Energy fuel station locations, available se
 
 ## 📌 About The Project
 
-This is a full stack app built with React and Node.js using Mongo DB database and Google interactive maps. The app will provide location-based search functionalities, also filtering by services and fuel prices. 
+This is a full-stack application built with React and Node.js, using a MongoDB database and Google Maps integration. The app allows users to search for Z Energy fuel stations by city or service (e.g. car wash), view real-time fuel prices, and interact with a responsive map featuring regional clustering.
+
 
 ## 📁 Folder Structure
 
 ```bash
 Z-Station-App/
-├── zApp-frontend/      # React client app (Vite)
+├── zApp-frontend/       # React client (Vite)
 │   ├── public/
 │   ├── src/
-│       ├── assets/
-│       ├── components/
-│           ├── ...
-│       ├── images/
+│   │   ├── assets/
+│   │   ├── components/
+│   │   ├── images/
+│   │   └── ...
 │   └── ...
-├── zApp-backend/       # Express.js backend
+├── zApp-backend/        # Express.js server
 │   ├── config/
 │   ├── models/
 │   ├── routes/
@@ -64,7 +65,7 @@ Z-Station-App/
 
 ## ⚙️ Getting Started
 
-To get a local copy up and running, follow these simple steps.
+To get a local copy up and running, follow these steps:
 
 ### 📦 Prerequisites
 
@@ -120,21 +121,31 @@ cd zApp-frontend
 npm run dev
 ```
 
-The frontend will run on http://localhost:5173 (or whatever Vite assigns).
-Once both servers are running, open your browser and visit the frontend URL. You can now:
-- Search for Z Energy stations by city or service (e.g. car wash)
-- Toggle fuel price visibility and filter by fuel type
-- Zoom in/out to see clustered vs individual stations on the interactive map
+Visit http://localhost:5173 to view the app.
+
+Features:
+- 🔍 Search stations by city or service
+- ⛽ Toggle fuel price display and filter by fuel type
+- 🗺️ Zoom in/out to reveal clustered or individual stations on the map
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 🤝 Contributing
-Contributions are welcome! If you'd like to suggest improvements or fix issues:
+Contributions are welcome! To contribute:
 1. Fork the repository
-2. Create a feature branch (git checkout -b feature/YourFeature)
-3. Commit your changes (git commit -m 'Add YourFeature')
-4. Push to the branch (git push origin feature/YourFeature)
-5. Open a Pull Request
+2. Create a feature branch
+```bash
+git checkout -b feature/YourFeature
+```
+4. Commit your changes
+```bash
+git commit -m 'Add YourFeature'
+```
+6. Push to your fork
+```bash
+ git push origin feature/YourFeature
+```
+8. Open a Pull Request
 
 ## 📫 Contact
 Erekle Sesiashvili
