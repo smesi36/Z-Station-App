@@ -136,8 +136,6 @@ Contributions are welcome! If you'd like to suggest improvements or fix issues:
 4. Push to the branch (git push origin feature/YourFeature)
 5. Open a Pull Request
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 ## 📫 Contact
 Erekle Sesiashvili
 [GitHub](https://github.com/smesi36/) | [LinkedIn](https://www.linkedin.com/in/erekle-sesiashvili-8b3a7b59/)<br>
