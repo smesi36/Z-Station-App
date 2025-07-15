@@ -7,7 +7,7 @@ A full-stack web app that displays Z Energy fuel station locations, available se
 ## 📖 Table of Contents
 
 - [About The Project](#about-the-project)
-- [Folder Structure](📁#folder-structure)
+- [Folder Structure](#folder-structure)
 - [Built With](#built-with)
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
@@ -39,8 +39,8 @@ Z-Station-App/
 │   └── ...
 ├── README.md
 └── .gitignore
-
 ```
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Built With
 
@@ -59,6 +59,8 @@ Z-Station-App/
 * Mongoose
 * MongoDB
 * CORS
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Getting Started
 
@@ -99,6 +101,7 @@ To get a local copy up and running, follow these simple steps.
         VITE_API_BASE_URL=http://localhost:8000
         VITE_Maps_API_KEY=your_Maps_api_key
         ```
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 🚀 Usage
 
@@ -123,6 +126,8 @@ Once both servers are running, open your browser and visit the frontend URL. You
 - Toggle fuel price visibility and filter by fuel type
 - Zoom in/out to see clustered vs individual stations on the interactive map
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ## 🤝 Contributing
 Contributions are welcome! If you'd like to suggest improvements or fix issues:
 1. Fork the repository
@@ -131,7 +136,11 @@ Contributions are welcome! If you'd like to suggest improvements or fix issues:
 4. Push to the branch (git push origin feature/YourFeature)
 5. Open a Pull Request
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ## 📫 Contact
 Erekle Sesiashvili
 [GitHub](https://github.com/smesi36/) | [LinkedIn](https://www.linkedin.com/in/erekle-sesiashvili-8b3a7b59/)<br>
 Email: smesi36@gmail.com
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
