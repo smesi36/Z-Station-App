@@ -1,10 +1,10 @@
-## Z Energy Station Locator App
+<a id="readme-top"></a>
+
+# Z Energy Station Locator App
 
 A full-stack web app that displays Z Energy fuel station locations, available services, and real-time fuel prices on an interactive map with regional clustering.
 
----
-
-## Table of Contents
+## 📁 Table of Contents
 
 - [About The Project](#about-the-project)
 - [Folder Structure](#folder-structure)
@@ -19,8 +19,6 @@ A full-stack web app that displays Z Energy fuel station locations, available se
 ## About The Project
 
 This is a full stack app built with React and Node.js using Mongo DB database and Google interactive maps. The app will provide location-based search functionalities, also filtering by services and fuel prices. 
-
----
 
 ## Built With
 
