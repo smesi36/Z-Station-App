@@ -1,6 +1,6 @@
-# Zapp - Full-Stack Application
+# Z Energy Station Locator App
 
-This repository contains the source code for Zapp, a full-stack web application. The project is divided into a React-based frontend and a Node.js/Express backend.
+A full-stack web app that displays Z Energy fuel station locations, available services, and real-time fuel prices on an interactive map with regional clustering.
 
 ---
 
