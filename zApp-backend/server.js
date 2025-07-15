@@ -3,13 +3,14 @@
 import express from "express";
 import cors from "cors";
 import morgan from "morgan";
-import { connectDB } from "./src/config/databaseConnection.js";
+import { connectDB } from "./config/databaseConnection.js";
 
 //This is for displaying station locations on the map
 import stationLocationsRoutes from "./src/routes/stationLocations.js";
-import testRoute from "./src/routes/testRoute.js";
 
-import searchServicesRoutes from "./src/routes/searchServices.js";
+import testRoute from "./routes/testRoute.js";
+
+import searchServicesRoutes from "./routes/searchServices.js";
 
 
 //___ INITIALIZE EXPRESS ___
@@ -38,13 +39,7 @@ app.use("/api/services", searchServicesRoutes);
 
 
 
-
-
-
 //___ RACHEL'S ENDPOINTS ___
-
-
-
 
 
 

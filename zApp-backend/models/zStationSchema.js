@@ -8,7 +8,7 @@ const fuelSchema = new mongoose.Schema({
   lastUpdated: { type: String, required: true },
 });
 
-// Define a schema for opening hours
+// Define a nested schema for opening hours
 const openingHoursSchema = new mongoose.Schema({
   monday_to_friday: { type: String, required: true },
   saturday: { type: String, required: true },
