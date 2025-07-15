@@ -9,7 +9,7 @@ A full-stack web app that displays Z Energy fuel station locations, available se
 - [📌 About The Project](#-about-the-project)
 - [📁 Folder Structure](#-folder-structure)
 - [🛠️ Built With](#built-with)
-- [⚙️ Getting Started](#getting-started)
+- [⚙️ Getting Started](#%EF%B8%8F-getting-started)
   - [📦 Prerequisites](#-prerequisites)
   - [📥 Installation](#-installation)
 - [🚀 Usage](#-usage)
