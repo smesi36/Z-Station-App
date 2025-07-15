@@ -20,23 +20,27 @@ A full-stack web app that displays Z Energy fuel station locations, available se
 
 This is a full stack app built with React and Node.js using Mongo DB database and Google interactive maps. The app will provide location-based search functionalities, also filtering by services and fuel prices. 
 
-## Folder Structure
+## 📁 Folder Structure
 
+```bash
 Z-Station-App/
 ├── zApp-frontend/      # React client app (Vite)
-│   ├── components/
-│   ├── pages/
-│   ├── utils/
+│   ├── public/
+│   ├── src/
+│       ├── assets/
+│       ├── components/
+│           ├── ...
+│       ├── images/
 │   └── ...
 ├── zApp-backend/       # Express.js backend
+│   ├── config/
 │   ├── models/
 │   ├── routes/
-│   ├── controllers/
 │   └── ...
 ├── README.md
 └── .gitignore
 
-
+```
 
 ## Built With
 
