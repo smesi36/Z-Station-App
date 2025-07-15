@@ -60,8 +60,6 @@ Z-Station-App/
 * MongoDB
 * CORS
 
----
-
 ## Getting Started
 
 To get a local copy up and running, follow these simple steps.
@@ -135,5 +133,5 @@ Contributions are welcome! If you'd like to suggest improvements or fix issues:
 
 ## 📫 Contact
 Erekle Sesiashvili
-[GitHub](https://github.com/smesi36/) | [LinkedIn](https://www.linkedin.com/in/erekle-sesiashvili-8b3a7b59/)
+[GitHub](https://github.com/smesi36/) | [LinkedIn](https://www.linkedin.com/in/erekle-sesiashvili-8b3a7b59/)<br>
 Email: smesi36@gmail.com
