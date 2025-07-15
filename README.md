@@ -102,8 +102,6 @@ To get a local copy up and running, follow these simple steps.
         VITE_Maps_API_KEY=your_Maps_api_key
         ```
 
----
-
 ## 🚀 Usage
 
 ### To run the app locally:
