@@ -51,8 +51,7 @@ export default function InteractiveMap({
   const zoom = 5.9;
   // Center on the coordinates of New Zealand
   const center = { lat: -41.2865, lng: 174.7762 };
-  //   {lat: -40.6, lng: 172.5 }
-
+  
   // Load the Maps API modules
   useEffect(() => {
     if (isLoaded && window.google) {
