@@ -11,15 +11,17 @@ import styles from "./MobileSearchUI.module.css"; // Assuming you have a CSS mod
 
 export default function MobileSearchUI() {
   const [showPrices, setShowPrices] = useState(false);
+  const [fuelType, setFuelType] = useState(null);
 
   const handleToggle = (checked) => {
     setShowPrices(checked);
+    if (!checked) setFuelType(null); // Reset fuel selection
   };
 
   const handleFuelSelect = (fuel) => {
-    console.log("Selected Fuel:", fuel); // for later
+    console.log("Selected Fuel:", fuel);
+    setFuelType(fuel);
   };
-
 
   return (
     <div className={styles.mobileContainer}>
@@ -43,7 +45,7 @@ export default function MobileSearchUI() {
           {showPrices && <FuelDropdown onSelect={handleFuelSelect} />}
         </div>
       </div>
-      <InteractiveMap />
+      <InteractiveMap showPrices={showPrices} fuelType={fuelType} />
     </div>
   );
 }

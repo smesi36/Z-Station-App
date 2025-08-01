@@ -51,7 +51,7 @@ export default function InteractiveMap({
   const zoom = 5.9;
   // Center on the coordinates of New Zealand
   const center = { lat: -41.2865, lng: 174.7762 };
-  
+
   // Load the Maps API modules
   useEffect(() => {
     if (isLoaded && window.google) {
@@ -100,23 +100,37 @@ export default function InteractiveMap({
         const hasValidLocation =
           station.location?.latitude && station.location?.longitude;
         const matchesFuel =
-          !fuelType || station.fuels?.some((fuel) => fuel.name === fuelType);
+          !fuelType ||
+          station.fuels?.some((fuel) => fuel.short_name === fuelType);
         return hasValidLocation && matchesFuel;
       })
       .map((station) => {
+        console.log("Station fuels:", station.fuels);
+        console.log("Looking for short_name:", fuelType);
+
+        const priceEntry = station.fuels?.find(
+          (f) => f.short_name === fuelType
+        );
+        const price = priceEntry?.price;
+
+        console.log(`Station: ${station.name}, Price: ${price}`);
+
         const marker = new googleMaps.Marker({
           position: {
             lat: parseFloat(station.location.latitude),
             lng: parseFloat(station.location.longitude),
           },
           title: station.name,
-
-          icon: showPrices
-            ? generatePriceMarker(station.price)
-            : icons.zMarkerIcon,
-          visible: false, // Start hidden
+          icon:
+            fuelType && showPrices && price !== undefined && price !== null
+              ? generatePriceMarker(price)
+              : showPrices
+              ? icons.fuelPrcMarkerLowest
+              : icons.zMarkerIcon,
+          visible: false,
           map,
         });
+
         return marker;
       });
 
@@ -143,6 +157,14 @@ export default function InteractiveMap({
           });
         },
       },
+    });
+
+    // 🔄 Force markers to show immediately based on current zoom
+    const currentZoom = map.getZoom();
+    const shouldShowStations = currentZoom >= 7;
+
+    stationMarkers.forEach((marker) => {
+      marker.setVisible(shouldShowStations);
     });
 
     // ✅ Add zoom_changed inside this effect

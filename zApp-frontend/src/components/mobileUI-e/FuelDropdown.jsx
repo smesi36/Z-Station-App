@@ -5,11 +5,15 @@ import { icons } from "../utils/IconsLibrary.js";
 
 // fuel options
 
-const fuelOptions = ["Z91 Unleaded", "ZX Premium", "Z Diesel"];
+const fuelOptions = [
+  { label: "91 Unleaded", value: "z91unleaded" },
+  { label: "Premium 98", value: "zxpremium" },
+  { label: "Diesel", value: "zdiesel" },
+];
 
-export default function FuelDropdown() {
+
+export default function FuelDropdown({ onSelect }) {
   const [isOpen, setIsOpen] = useState(false);
-  // const [selected, setSelected] = useState("Fuel type");
 
   return (
     <div className={styles.dropdownContainer}>
@@ -22,12 +26,15 @@ export default function FuelDropdown() {
       {isOpen && (
         <ul className={styles.dropdownList}>
           {fuelOptions.map((fuel) => (
-            <li 
-            key={fuel} 
-            className={styles.dropdownItem}
-            onClick={() => onselect(fuel)}
+            <li
+              key={fuel.value}
+              className={styles.dropdownItem}
+              onClick={() => {
+                onSelect(fuel.value);
+                setIsOpen(false);
+              }}
             >
-              {fuel}
+              {fuel.label}
             </li>
           ))}
         </ul>
