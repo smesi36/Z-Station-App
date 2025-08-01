@@ -6,7 +6,7 @@ import morgan from "morgan";
 import { connectDB } from "./config/databaseConnection.js";
 
 //This is for displaying station locations on the map
-import stationLocationsRoutes from "./src/routes/stationLocations.js";
+import stationLocationsRoutes from "./routes/stationLocations.js";
 
 import testRoute from "./routes/testRoute.js";
 
